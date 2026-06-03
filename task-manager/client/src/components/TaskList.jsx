@@ -5,10 +5,13 @@ function TaskList({
   fetchTasks,
   setEditingTask,
 }) {
+  const API_URL =
+    "https://task-manager-api-8qsu.onrender.com/api/tasks";
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/tasks/${id}`
+        `${API_URL}/${id}`
       );
 
       fetchTasks();
@@ -20,7 +23,7 @@ function TaskList({
   const handleToggle = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:5000/api/tasks/${id}/toggle`
+        `${API_URL}/${id}/toggle`
       );
 
       fetchTasks();

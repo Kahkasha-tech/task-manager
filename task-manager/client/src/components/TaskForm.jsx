@@ -11,6 +11,9 @@ function TaskForm({
     useState("");
   const [dueDate, setDueDate] = useState("");
 
+  const API_URL =
+    "https://task-manager-api-8qsu.onrender.com/api/tasks";
+
   useEffect(() => {
     if (editingTask) {
       setTitle(editingTask.title);
@@ -25,7 +28,7 @@ function TaskForm({
     try {
       if (editingTask) {
         await axios.put(
-          `http://localhost:5000/api/tasks/${editingTask.id}`,
+          `${API_URL}/${editingTask.id}`,
           {
             title,
             description,
@@ -37,14 +40,11 @@ function TaskForm({
 
         setEditingTask(null);
       } else {
-        await axios.post(
-          "http://localhost:5000/api/tasks",
-          {
-            title,
-            description,
-            dueDate,
-          }
-        );
+        await axios.post(API_URL, {
+          title,
+          description,
+          dueDate,
+        });
 
         alert("Task Added Successfully");
       }

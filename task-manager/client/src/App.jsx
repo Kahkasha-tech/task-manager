@@ -11,7 +11,7 @@ function App() {
   const fetchTasks = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/tasks"
+        "https://task-manager-api-8qsu.onrender.com/api/tasks"
       );
 
       setTasks(response.data);
