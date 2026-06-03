@@ -1,8 +1,11 @@
+
 # Task Manager Application
 
-## Project Title & Brief Description
+## Project Overview
 
-Task Manager Application is a full-stack web application built using React, Node.js, and Express.js. The application allows users to create, view, update, delete, and manage tasks efficiently. Users can mark tasks as complete or incomplete, filter tasks based on status, edit existing tasks, and identify overdue tasks. The project demonstrates frontend-backend integration using REST APIs and includes persistent data storage using a JSON file.
+The Task Manager Application is a full-stack web application developed using React, Node.js, and Express.js. It helps users manage their daily tasks by allowing them to create, update, delete, and track task completion status.
+
+The application includes task filtering, overdue task highlighting, task statistics, and persistent storage. The frontend is deployed on Vercel, while the backend is deployed on Render.
 
 ---
 
@@ -10,7 +13,7 @@ Task Manager Application is a full-stack web application built using React, Node
 
 ### Frontend (Vercel)
 
-https://task-manager-57s391jd9-kahkasha9455-1952s-projects.vercel.app
+https://task-manager-xi-six-45.vercel.app/
 
 ### Backend (Render)
 
@@ -22,43 +25,44 @@ https://github.com/Kahkasha-tech/task-manager
 
 ---
 
+## Features
+
+* Create New Tasks
+* View All Tasks
+* Edit Existing Tasks
+* Delete Tasks
+* Mark Tasks as Complete / Incomplete
+* Filter Tasks (All, Active, Completed)
+* Active Task Count
+* Completed Task Count
+* Overdue Task Highlighting
+* Persistent Data Storage
+* Responsive User Interface
+
+---
+
 ## Tech Stack
 
 ### Frontend
 
 * React
-
-  * Used for building reusable UI components and managing application state.
 * Axios
-
-  * Used for making HTTP requests to the backend API.
 * Vite
-
-  * Fast development environment and build tool for React applications.
 
 ### Backend
 
 * Node.js
-
-  * JavaScript runtime environment.
 * Express.js
-
-  * Framework used to build RESTful APIs.
 * UUID
 
-  * Used to generate unique IDs for tasks.
-* fs-extra
+### Storage
 
-  * Used for reading and writing task data to a JSON file.
+* JSON File Storage (`tasks.json`)
 
 ### Deployment
 
-* Vercel
-
-  * Frontend hosting platform.
-* Render
-
-  * Backend hosting platform.
+* Vercel (Frontend)
+* Render (Backend)
 
 ---
 
@@ -71,7 +75,7 @@ git clone https://github.com/Kahkasha-tech/task-manager.git
 cd task-manager
 ```
 
-### Backend Setup
+### Run Backend
 
 ```bash
 cd server
@@ -79,13 +83,13 @@ npm install
 node server.js
 ```
 
-Backend runs on:
+Backend will run on:
 
 ```text
 http://localhost:5000
 ```
 
-### Frontend Setup
+### Run Frontend
 
 Open a new terminal:
 
@@ -95,7 +99,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs on:
+Frontend will run on:
 
 ```text
 http://localhost:5173
@@ -107,16 +111,8 @@ http://localhost:5173
 
 ### Get All Tasks
 
-Method:
-
 ```http
-GET
-```
-
-Path:
-
-```http
-/api/tasks
+GET /api/tasks
 ```
 
 Response:
@@ -133,20 +129,10 @@ Response:
 ]
 ```
 
----
-
 ### Create Task
 
-Method:
-
 ```http
-POST
-```
-
-Path:
-
-```http
-/api/tasks
+POST /api/tasks
 ```
 
 Request Body:
@@ -159,98 +145,22 @@ Request Body:
 }
 ```
 
-Response:
-
-```json
-{
-  "id": "generated-id",
-  "title": "Learn React",
-  "description": "Practice Hooks",
-  "dueDate": "2026-06-20",
-  "completed": false
-}
-```
-
----
-
 ### Update Task
 
-Method:
-
 ```http
-PUT
+PUT /api/tasks/:id
 ```
-
-Path:
-
-```http
-/api/tasks/:id
-```
-
-Request Body:
-
-```json
-{
-  "title": "Updated Title",
-  "description": "Updated Description",
-  "dueDate": "2026-06-25"
-}
-```
-
-Response:
-
-```json
-{
-  "message": "Task updated successfully"
-}
-```
-
----
 
 ### Delete Task
 
-Method:
-
 ```http
-DELETE
+DELETE /api/tasks/:id
 ```
-
-Path:
-
-```http
-/api/tasks/:id
-```
-
-Response:
-
-```json
-{
-  "message": "Task deleted successfully"
-}
-```
-
----
 
 ### Toggle Task Status
 
-Method:
-
 ```http
-PATCH
-```
-
-Path:
-
-```http
-/api/tasks/:id/toggle
-```
-
-Response:
-
-```json
-{
-  "message": "Task status updated"
-}
+PATCH /api/tasks/:id/toggle
 ```
 
 ---
@@ -261,72 +171,74 @@ Response:
 task-manager
 │
 ├── client
-│   ├── public
 │   ├── src
 │   │   ├── components
 │   │   │   ├── TaskForm.jsx
 │   │   │   └── TaskList.jsx
 │   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   ├── package.json
-│   └── vite.config.js
+│   │   └── main.jsx
+│   │
+│   └── package.json
 │
 ├── server
 │   ├── server.js
 │   ├── tasks.json
-│   ├── package.json
-│   └── package-lock.json
+│   └── package.json
 │
 └── README.md
 ```
 
 ### Folder Description
 
-* client/ → React frontend application
-* server/ → Express backend application
-* tasks.json → Persistent task storage
-* README.md → Project documentation
+* `client/` → React frontend application
+* `server/` → Express backend APIs
+* `tasks.json` → Stores task data
+* `README.md` → Project documentation
 
 ---
 
-## Features
+## Deployment
 
-* Create Tasks
-* View Tasks
-* Edit Tasks
-* Delete Tasks
-* Mark Complete / Incomplete
-* Task Filtering
-* Active Task Count
-* Completed Task Count
-* Overdue Task Highlighting
-* Persistent Data Storage
-* Responsive User Interface
-* Full Stack Deployment
+### Frontend
 
----
+Deployed on Vercel:
 
-## Next Steps
+https://task-manager-xi-six-45.vercel.app/
 
-Given more time, the following improvements could be implemented:
+### Backend
 
-1. User Authentication and Authorization.
-2. MongoDB Database Integration instead of JSON file storage.
-3. Search Functionality.
-4. Task Categories and Priority Levels.
-5. Due Date Notifications.
-6. Dark Mode Support.
-7. Drag-and-Drop Task Reordering.
-8. Unit and Integration Testing.
-9. Docker-based Deployment.
-10. CI/CD Pipeline Integration.
+Deployed on Render:
 
----
+https://task-manager-api-8qsu.onrender.com
+
+
+## Challenges Faced
+
+- Integrating React frontend with Express backend.
+- Managing task state after CRUD operations.
+- Deploying and connecting frontend and backend in production.
+
+
+## Future Improvements
+
+If given more time, I would add:
+
+* User Authentication
+* MongoDB Database Integration
+* Search Functionality
+* Task Priority Levels
+* Dark Mode
+* Email Notifications
+* Unit Testing
+
+
+
+
+
+
 
 ## Author
 
 Kahkasha Naz
 
-Task Manager Application – Full Stack Assessment Project
-
+Full Stack Task Manager Project
